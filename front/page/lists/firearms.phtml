@@ -1,0 +1,25 @@
+<div class="container dashboard-container">
+  <div class="row">
+    <?php include(__DIR__.'/../sidebar.phtml'); ?>
+    <div class="col-md-9">
+    	<h3>Firearms</h3>
+    	<hr>
+    	<table class="table table-striped">
+    		<thead>
+    			<tr>
+    				<th class="text-center header">Title</th>
+    				<th class="text-center header">Serial</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<?php foreach($firearms as $firearm): ?>
+    			<tr>
+    				<td class="text-center header"><?php echo $firearm['firearm_title']; ?></td>
+    				<td class="text-center header"><?php echo $firearm['firearm_serial']; ?></td>
+    			</tr>
+    			<?php endforeach; ?>
+    		</tbody>
+    	</table>
+    </div>
+  </div>
+</div>

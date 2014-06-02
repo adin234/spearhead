@@ -1,0 +1,173 @@
+<div class="container dashboard-container">
+  <div class="row">
+    <?php include(__DIR__.'/../sidebar.phtml'); ?>
+    <div class="col-md-9">
+    	<h3>Client Form</h3>
+    	<hr>
+    	<form class="form-horizontal" method="post">
+	    	<div class="row">
+	    		<div class="col-md-6">
+					<div class="clearfix form-group">
+						<label for="client_code" class="col-sm-4 control-label">Client Code</label>
+						<div class="col-sm-8">
+							<input id="client_code" type="text" class="form-control" name="client_code" placeholder="Client Code">
+						</div>
+					</div>  
+	    		</div>
+	    		<div class="col-md-6">
+	    			<div class="clearfix form-group">
+						<label for="client_name" class="col-sm-4 control-label">Client Name</label>
+						<div class="col-sm-8">
+							<input id="client_name" type="text" class="form-control" name="client_name" placeholder="Client Name">
+						</div>
+					</div> 
+	    		</div>
+	    		<div class="col-md-12">
+	    			<div class="clearfix form-group">
+						<label for="client_address" class="col-sm-2 control-label">Client Address</label>
+						<div class="col-sm-10">
+							<textarea id="client_address" type="text" class="form-control" name="client_address" placeholder="Address"></textarea>
+						</div>
+					</div> 
+	    		</div>
+	    		<div class="col-md-12">
+	    			<div class="clearfix form-group">
+						<label for="client_contact_person" class="col-sm-2 control-label">Contact Person</label>
+						<div class="col-sm-10">
+							<input id="client_contact_person" type="text" class="form-control" name="client_contact_person" placeholder="Contact Person" />
+						</div>
+					</div> 
+	    		</div>
+	    		<div class="col-md-6">
+	    			<div class="clearfix form-group">
+						<label for="client_contract_price" class="col-sm-4 control-label">Contract Price</label>
+						<div class="col-sm-8">
+							<input id="client_contract_price" type="text" class="form-control" name="client_contract_price" placeholder="Contract Price">
+						</div>
+					</div>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<div class="clearfix form-group">
+						<label for="client_guards" class="col-sm-4 control-label">No. of Guards</label>
+						<div class="col-sm-8">
+							<input id="client_guards" type="text" class="form-control" name="client_guards" placeholder="No. of Guards">
+						</div>
+					</div>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<div class="clearfix form-group">
+		    			<label class="col-sm-4 control-label">Billing Cycle</label>
+		    			<div class="col-sm-8">
+							<label class="checkbox-inline">
+								<input name="client_billing" type="radio" value="monthly"> Monthly
+							</label>
+							<label class="checkbox-inline">
+								<input name="client_billing" type="radio" value="semi"> Semi-monthly
+							</label>
+						</div>
+					</div>
+	    		</div>
+	    		<div class="col-md-12 contact-number">
+	    			<div class="clearfix form-group">
+						<label for="client_guards" class="col-sm-2 control-label">Firearms:</label>
+						<div class="col-sm-10">
+	    					<input type="text" class="contact form-control typeahead-firearms" name="client_firearms[]" placeholder="Firearm">
+						</div>
+					</div>
+	    		</div>
+	    		<div class="col-md-12">
+	    			<div class="clearfix form-group">
+						<label for="client_ammo" class="col-sm-2 control-label">Ammo Qty</label>
+						<div class="col-sm-10">
+							<input id="client_ammo" type="text" class="form-control" name="client_ammo" placeholder="Ammo Qty" />
+						</div>
+					</div> 
+	    		</div>
+	    		<div class="col-md-12 contact-number">
+	    			<span class="category">Contact Number/s
+	    				<a href="#contact-container" id="addContact"><i class="pull-right glyphicon glyphicon-plus"></i></a>
+	    			</span>
+	    			<hr class="small">
+	    			<div class="row" id="contact-container">
+	    				<div class="col-md-4">
+	    					<input type="text" class="contact form-control" name="client_contact[]" placeholder="Client Contact">
+	    				</div>
+	    			</div>
+	    			<hr class="small">
+	    		</div>
+	    		<div class="col-md-12">
+	    			<span class="category">Other Equipment/s
+	    				<a href="#equipment-container" id="addEquipment"><i class="pull-right glyphicon glyphicon-plus"></i></a>
+	    			</span>
+	    			<hr class="small">
+	    			<div class="row" id="equipment-container">
+	    				<div class="col-md-4">
+	    					<input type="text" class="contact form-control" name="client_equipment[]" placeholder="Equipment">
+	    				</div>
+	    			</div>
+	    			<hr class="small">
+	    		</div>
+	    		<div class="col-md-12">
+	    			<span class="category">Salary
+	    				<a href="#salary-container" id="addSalary"><i class="pull-right glyphicon glyphicon-plus"></i></a>
+	    			</span>
+	    			<hr class="small">
+	    			<div class="row" id="salary-container">
+	    				<div class="salary-row">
+		    				<div class="col-md-4">
+		    					<input type="text" class="contact form-control" name="client_staff[0][title]" placeholder="Title">
+		    				</div>
+		    				<div class="col-md-6">
+		    					<input type="text" class="contact form-control typeahead-staff" name="client_staff[0][user]" placeholder="User">
+		    				</div>
+		    				<div class="col-md-2 text-right">
+		    					<input type="text" class="contact form-control salary" name="client_staff[0][salary]" placeholder="Salary">
+		    				</div>
+	    				</div>
+	    			</div>
+	    			<div class="row">
+	    				<div class="col-md-4">
+	    				</div>
+	    				<div class="col-md-6 total-label">
+	    					Total:
+	    				</div>
+	    				<div class="col-md-2 text-right total-value">
+	    					P 10,000.00
+	    				</div>
+	    			</div>
+	    			<hr class="small">
+	    		</div>
+	    	</div>
+	    	<button type="submit" class="btn form-submit">Submit</button>
+	    </form>
+    </div>
+  </div>
+</div>
+<script type="text/html" id="contact-tpl">
+	<div class="col-md-4">
+		<input type="text" class="contact form-control" name="client_contact[]" placeholder="Client Contact">
+	</div>
+</script>
+<script type="text/html" id="firearm-tpl">
+	<div class="col-md-4">
+		<input type="text" class="contact form-control" name="client_firearms[]" placeholder="Firearm">
+	</div>
+</script>
+<script type="text/html" id="equipment-tpl">
+	<div class="col-md-4">
+		<input type="text" class="contact form-control" name="client_equipment[]" placeholder="Equipment">
+	</div>
+</script>
+<script type="text/html" id="salary-tpl">
+	<div class="salary-row">
+		<div class="col-md-4">
+			<input type="text" class="contact form-control" name="client_staff[{{INDEX}}][title]" placeholder="Title">
+		</div>
+		<div class="col-md-6">
+			<input type="text" class="contact form-control typeahead-staff" name="client_staff[{{INDEX}}][user]" placeholder="User">
+		</div>
+		<div class="col-md-2 text-right">
+			<input type="text" class="contact form-control salary" name="client_staff[{{INDEX}}][salary]" placeholder="Salary">
+		</div>
+	</div>
+</script>
