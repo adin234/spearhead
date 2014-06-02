@@ -24,6 +24,8 @@ class Front_Page_Index extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
+		header("Location: /login");
+		exit;
 		return $this->_page();
 	}
 	
