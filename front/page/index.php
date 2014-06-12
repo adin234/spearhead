@@ -16,7 +16,7 @@ class Front_Page_Index extends Front_Page {
 	protected $_title = 'Eden';
 	protected $_class = 'home';
 	protected $_template = '/index.phtml';
-	
+
 	/* Private Properties
 	-------------------------------*/
 	/* Magic
@@ -28,7 +28,7 @@ class Front_Page_Index extends Front_Page {
 		exit;
 		return $this->_page();
 	}
-	
+
 	/* Protected Methods
 	-------------------------------*/
 	/* Private Methods

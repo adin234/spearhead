@@ -1,0 +1,57 @@
+<style type="text/css">
+  .pick {
+    width: 45%;
+    display: inline-block;
+  }
+</style>
+<link rel="stylesheet" href="/css/datepicker.css" />
+<div class="container dashboard-container">
+  <div class="row">
+    <?php include(__DIR__.'/../sidebar.phtml'); ?>
+    <div class="col-md-9">
+      <h3>Clients</h3>
+      <hr>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center header">ID</th>
+            <th class="text-left header">Client</th>
+            <th class="text-center header">Guards</th>
+            <th class="text-left header">Contract</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach($clients as $client): ?>
+          <tr>
+            <td class="text-center header"><?php echo $client['client_code']; ?></td>
+            <td class="text-left header"><?php echo $client['client_name']; ?></td>
+            <td class="text-center header"><?php echo $client['client_guards']; ?></td>
+            <td class="text-right header"><?php echo $client['client_contract_price']; ?></td>
+            <td><a class="btn btn-primary" href="javascript:createBilling('<?php echo $client['client_id'];
+              ?>')"><i class="glyphicon glyphicon glyphicon-list-alt"></i> Bill</a></td>
+          </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Create Billing</h4>
+      </div>
+      <div class="modal-body">
+        <input class="form-control pick" placeholder="Start" id="start" /> - <input class="form-control pick" placeholder="end" id="end" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="generate" class="btn btn-primary">Go</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

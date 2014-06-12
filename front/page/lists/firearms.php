@@ -16,7 +16,7 @@ class Front_Page_Lists_Firearms extends Front_Page {
 	protected $_title = 'Firearms List';
 	protected $_class = 'firearms-list';
 	protected $_template = '/lists/firearms.phtml';
-	
+
 	/* Private Properties
 	-------------------------------*/
 	/* Magic

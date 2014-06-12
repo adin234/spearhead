@@ -1,0 +1,229 @@
+<style type="text/css">
+  .bold {
+    font-weight: bold;
+  }
+  div.body {
+    padding: 0;
+  }
+  .body {
+    font-family: arial;
+  }
+  .body .body{
+    margin-top: 20px;
+  }
+  .logo-container {
+    float: left;
+  }
+  .text-container {
+    padding-left: -200px;
+    overflow: hidden;
+  }
+  .text-container > span {
+    display: block;
+    text-align: center;
+  }
+  .spearhead {
+    font-weight: bold;
+    font-size: 26px;
+  }
+  .address-line1, .address-line2, .number {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .body .date-client .company {
+    font-weight: bold;
+  }
+  .body .date-client .lbl {
+    width: 200px;
+    float: left;
+  }
+  .body .date-client .value {
+    float: left;
+  }
+  .body .title {
+    display: block;
+    text-align:center;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+  }
+  .body .dear {
+    font-weight: bold;
+  }
+  .body .line {
+    display: block;
+    padding: 10px 0;
+  }
+  .body .lbl {
+    font-weight: bold;
+    float: left;
+  }
+  .body .subject .msg {
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: right;
+    padding-right: 100px;
+  }
+  .body .msg {
+    overflow: hidden;
+    display: block;
+  }
+  .body .msg.price {
+    font-weight: bold;
+    text-align: center;
+    margin-right: 100px;
+  }
+  .body .msg.date {
+    text-align: center;
+  }
+  .nobold {
+    font-weight: normal;
+  }
+  .tabbed {
+    padding-left: 20px;
+  }
+  .legend {
+    width: 325px;
+  }
+  .pieytspi {
+    width: 100px;
+  }
+  .lined .pieytspi, .lined .price {
+    border-bottom: 1px solid black;
+  }
+  .price {
+    padding-right: 10px;
+  }
+  .half {
+    width: 50%;
+    float: left;
+  }
+  .name {
+    font-weight: bold;
+  }
+  .by {
+    display: block;
+    text-align: center;
+  }
+  .horizontal-line {
+    display: block;
+    content: ' ';
+    border-bottom: 1px solid black;
+    margin: 0 20px;
+  }
+  .less {
+    margin-left: 20px;
+  }
+  .less .horizontal-line {
+    margin-left: 80px;
+  }
+  @media print {
+    @page { margin: 0; }
+    body { margin: 1.6cm; }
+  }
+</style>
+
+<div class="section">
+  <div class="header">
+    <div class="logo-container">
+      <img src="//placehold.it/100x100" />
+    </div>
+    <div class="text-container">
+      <span class="spearhead">SPEARHEAD SECURITY AGENCY</span>
+      <span class="address-line1">#47 Emilio Aguinaldo Highway, Talaba 5</span>
+      <span class="address-line2">Bacoor City, Cavite</span>
+      <span class="number">(02) 404-8840</span>
+    </div>
+  </div>
+  <div class="body">
+    <div class="date-client">
+      <span class="clearfix">
+        <span class="lbl">DATE:</span>
+        <span class="value"><?php echo $today; ?></span>
+      </span>
+      <span class="clearfix">
+        <span class="lbl">CLIENT:</span>
+        <span class="value">
+          <span class="company"><?php echo $client['client_name'];?></span><br/>
+          <span class="address"><?php echo nl2br($client['client_address']); ?></span>
+        </span>
+      </span>
+    </div>
+    <span class="line clearfix title">BILLING STATEMENT</span>
+    <span class="line clearfix dear">Dear Sir/Madam:</span>
+    <span class="line clearfix message">Please refer to below-listed item/s for your reference:</span>
+    <span class="line clearfix subject">
+      <span class="lbl">SUBJECT:</span>
+      <span class="msg">PAYMENT OF SECURITY CONSULTANCY & SERVICES</span>
+    </span>
+    <span class="line clearfix ">
+      <span class="lbl">PERIOD OF SERVICE:</span>
+      <span class="msg date"><?php echo $serviceFrom.' - '.$serviceTo; ?></span>
+    </span>
+    <span class="line clearfix ">
+      <span class="lbl">AMOUNT DUE:<br/>
+        <span class="nobold">(Number of GUard/s X Agreed Bi-Monthly Rate)</span>
+      </span>
+      <span class="msg price">Php <?php echo $total; ?></span>
+    </span>
+    <table>
+        <tr>
+          <td class="bold" colspan="4">
+            COMPUTATION
+          </td>
+        </tr>
+        <tr>
+          <td class="bold tabbed legend" colspan="2">Number of Guard/s:</td>
+          <td></td>
+          <td><?php echo $client['client_guards']; ?></td>
+        </tr>
+        <tr>
+          <td class="bold tabbed legend" colspan="2">Number of Days</td>
+          <td></td>
+          <td><?php echo $noDays; ?></td>
+        </tr>
+        <tr class="lined">
+          <td class="bold tabbed legend" colspan="2">Rate (P12,000/30 Days)</td>
+          <td class="text-left pieytspi">Php</td>
+          <td class="text-right price"><?php echo $perDay; ?></td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="text-left pieytspi">Php</td>
+          <td class="text-right price"><?php echo $total; ?></td>
+        </tr>
+        <tr class="lined">
+          <td class="bold legend" colspan="2">Less Withholding Tax</td>
+          <td class="text-left pieytspi"></td>
+          <td class="text-right price">-</td>
+        </tr>
+        <tr class="bold">
+          <td class="bold legend" colspan="2"></td>
+          <td class="text-left pieytspi">Php</td>
+          <td class="text-right price"><?php echo $total; ?></td>
+        </tr>
+        <tr class="lined">
+          <td class="bold legend" colspan="2"></td>
+          <td class="text-left" colspan="2">====================</td>
+        </tr>
+    </table>
+    <span class="line clearfix message">
+      The above amount is payable on demand unless previously arranged.
+      Please advice us, upon receipt, for any discrepancy.
+    </span>
+    <div class="clearfix">
+      <div class="half">
+        Prepared by:<br/><br/><br/><br/><br/>
+        <span class="horizontal-line"></span>
+        <span class="by name">Ms. ELEANOR EUSEBIO</span>
+        <span class="by pos">Finance Officer</span>
+      </div>
+      <div class="half">
+        Received by:<br/><br/><br/><br/><br/>
+        <span class="horizontal-line"></span>
+        <span class="by name">Signature Over Printed Name</span>
+        <span class="less">Date: <span class="horizontal-line"></span></span>
+      </div>
+    </div>
+  </div>
+</div>

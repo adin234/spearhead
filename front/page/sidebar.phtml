@@ -1,19 +1,19 @@
 <div class="col-md-3">
-  <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i>Tools</strong></a>  
+  <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i>Tools</strong></a>
   <hr>
   <ul class="list-unstyled">
-    <li class="<?php echo $activeSidebar == 'home' ? 'active' : ''; 
+    <li class="<?php echo $activeSidebar == 'home' ? 'active' : '';
     ?>"> <a href="/dashboard"><i class="glyphicon glyphicon-home"></i>Home</a></li>
     <li class="nav-header">
       <a href="#" data-toggle="collapse" data-target="#formMenu">
       <h5 class="clearfix">Forms <i class="pull-right glyphicon glyphicon-chevron-down"></i></h5>
       </a>
       <ul class="list-unstyled collapse in" id="formMenu">
-        <li class="<?php echo $activeSidebar == 'form-client' ? 'active' : ''; 
+        <li class="<?php echo $activeSidebar == 'form-client' ? 'active' : '';
         ?>"> <a href="/forms/client"><i class="glyphicon glyphicon-tower"></i>Client</a></li>
-        <li class="<?php echo $activeSidebar == 'form-staff' ? 'active' : ''; 
+        <li class="<?php echo $activeSidebar == 'form-staff' ? 'active' : '';
         ?>"><a href="/forms/staff"><i class="glyphicon glyphicon-user"></i>Staff</a></li>
-        <li class="<?php echo $activeSidebar == 'form-firearms' ? 'active' : ''; 
+        <li class="<?php echo $activeSidebar == 'form-firearms' ? 'active' : '';
         ?>"><a href="/forms/firearms"><i class="glyphicon glyphicon-wrench"></i>Firearms</a></li>
       </ul>
     </li>
@@ -22,10 +22,11 @@
       <h5 class="clearfix">Lists <i class="pull-right glyphicon glyphicon-chevron-down"></i></h5>
       </a>
       <ul class="list-unstyled collapse in" id="listMenu">
-        <li class=""> <a href="#"><i class="glyphicon glyphicon-tower"></i>Client</a></li>
-        <li class="<?php echo $activeSidebar == 'list-staff' ? 'active' : ''; 
+        <li class="<?php echo $activeSidebar == 'list-client' ? 'active' : '';
+        ?>"><a href="/lists/client"><i class="glyphicon glyphicon-tower"></i>Client</a></li>
+        <li class="<?php echo $activeSidebar == 'list-staff' ? 'active' : '';
         ?>"><a href="/lists/staff"><i class="glyphicon glyphicon-user"></i>Staff</a></li>
-        <li class="<?php echo $activeSidebar == 'list-firearms' ? 'active' : ''; 
+        <li class="<?php echo $activeSidebar == 'list-firearms' ? 'active' : '';
         ?>"><a href="/lists/firearms"><i class="glyphicon glyphicon-wrench"></i>Firearms</a></li>
       </ul>
     </li>

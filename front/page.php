@@ -5,7 +5,7 @@
 
 /**
  * The base class for any class that defines a view.
- * A view controls how templates are loaded as well as 
+ * A view controls how templates are loaded as well as
  * being the final point where data manipulation can occur.
  *
  * @package    Eden
@@ -21,11 +21,11 @@ abstract class Front_Page extends Eden_Class {
 	protected $_head 	= array();
 	protected $_body 	= array();
 	protected $_foot 	= array();
-	
+
 	protected $_title 		= NULL;
 	protected $_class 		= NULL;
 	protected $_template 	= NULL;
-	
+
 	/* Private Properties
 	-------------------------------*/
 	/* Get
@@ -39,14 +39,14 @@ abstract class Front_Page extends Eden_Class {
 			Eden_Error_Event::i()->exceptionHandler($e);
 			return '';
 		}
-		
+
 		if(is_null($output)) {
 			return '';
 		}
-		
+
 		return $output;
 	}
-	
+
 	/* Public Methods
 	-------------------------------*/
 	/**
@@ -55,17 +55,17 @@ abstract class Front_Page extends Eden_Class {
 	 * @return string
 	 */
 	abstract public function render();
-	
+
 	/* Protected Methods
 	-------------------------------*/
 	protected function _page() {
 		$this->_head['page'] = $this->_class;
-		
+
 		$page = front()->path('page');
-		$head = front()->trigger('head')->template($page.'/_head.phtml', $this->_head);
+		$head = (!isset($this->bodyonly)) ? front()->trigger('head')->template($page.'/_head.phtml', $this->_head) : '';
 		$body = front()->trigger('body')->template($page.$this->_template, $this->_body);
-		$foot = front()->trigger('foot')->template($page.'/_foot.phtml', $this->_foot);
-		
+		$foot = (!isset($this->bodyonly)) ? front()->trigger('foot')->template($page.'/_foot.phtml', $this->_foot) : '';
+
 		$_SESSION['message'] = array();
 		//page
 		return front()->template($page.'/_page.phtml', array(
@@ -84,7 +84,7 @@ abstract class Front_Page extends Eden_Class {
 
 		$_SESSION['message'][] = array('message' => $message, 'type' => $type);
 	}
-	
+
 	/* Private Methods
 	-------------------------------*/
 }

@@ -1,3 +1,6 @@
+html.billing .page {
+  background: #fff;
+}
 .alert.small-space:last-of-type {
   margin-bottom: 20px;
 }
@@ -13,7 +16,7 @@ i {
 .nav > li > a {
   color:#787878;
 }
-  
+
 footer {
   margin-top:20px;
   padding-top:20px;

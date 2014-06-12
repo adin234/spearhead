@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 	$('#addSalary').on('click', function() {
 		$('#salary-container').append(template(
-			$('#salary-tpl').html(), 
+			$('#salary-tpl').html(),
 			{ index: $('#salary-container .salary-row').length }
 		));
 
@@ -33,24 +33,60 @@ $(document).ready(function() {
 	if($('html.client-form').length) {
 		clientForm();
 	}
+
+  if($('html.client-list').length) {
+    clientList();
+  }
 });
 
 var firearms;
 var staff;
+var billingId;
+
+var createBilling = function(id) {
+  billingId = id;
+  $('#myModal').modal();
+};
+
+var clientList = function() {
+  $('#start').datepicker({
+      format: "yyyy-mm-dd",
+      weekStart: 0,
+      startView: 1
+  });
+
+  $('#end').datepicker({
+      format: "yyyy-mm-dd",
+      weekStart: 0,
+      startView: 1
+  });
+
+  $("#generate").click(function() {
+    var url = '/billing/'+billingId+'?start='+$("#start").val()+'&end='+$("#end").val();
+    $.get(url, function(html) {
+      var WindowObject = window.open("", "PrintWindow",
+      "width=750,height=650,top=50,left=50,toolbars=no,scrollbars=yes,status=no,resizable=yes");
+      WindowObject.document.writeln(html);
+      WindowObject.document.close();
+      WindowObject.focus();
+      WindowObject.print();
+    });
+  });
+}
 
 var clientForm = function() {
 	firearms = new Bloodhound({
 		datumTokenizer: function(s) {
-			
+
 		},
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
 		limit: 10,
 		remote: {
 			url: '/lists/firearms?ajax&query=%QUERY',
 			filter: function(list) {
-				return $.map(list, function(firearm) { 
-					firearm['tokens'] = [firearm.firearm_title, firearm.firearm_serial]; 
-					return firearm; 
+				return $.map(list, function(firearm) {
+					firearm['tokens'] = [firearm.firearm_title, firearm.firearm_serial];
+					return firearm;
 				});
 			}
 		}
@@ -62,17 +98,17 @@ var clientForm = function() {
 
 	staff = new Bloodhound({
 		datumTokenizer: function(s) {
-			
+
 		},
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
 		limit: 10,
 		remote: {
 			url: '/lists/staff?ajax&query=%QUERY',
 			filter: function(list) {
-				return $.map(list, function(user) { 
+				return $.map(list, function(user) {
 					user['user_fullname'] = user.user_firstname+' '+user.user_lastname;
-					user['tokens'] = [user.user_firstname, user.user_lastname]; 
-					return user; 
+					user['tokens'] = [user.user_firstname, user.user_lastname];
+					return user;
 				});
 			}
 		}
@@ -167,12 +203,12 @@ var template = function(templateHTML, data) {
 };
 
 Number.prototype.formatMoney = function(c, d, t){
-var n = this, 
-    c = isNaN(c = Math.abs(c)) ? 2 : c, 
-    d = d == undefined ? "." : d, 
-    t = t == undefined ? "," : t, 
-    s = n < 0 ? "-" : "", 
-    i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", 
+var n = this,
+    c = isNaN(c = Math.abs(c)) ? 2 : c,
+    d = d == undefined ? "." : d,
+    t = t == undefined ? "," : t,
+    s = n < 0 ? "-" : "",
+    i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
     j = (j = i.length) > 3 ? j % 3 : 0;
    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
  };

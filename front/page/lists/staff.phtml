@@ -2,12 +2,12 @@
   <div class="row">
     <?php include(__DIR__.'/../sidebar.phtml'); ?>
     <div class="col-md-9">
-    	<h3>Firearms</h3>
+    	<h3>Staff</h3>
     	<hr>
     	<table class="table table-striped">
     		<thead>
     			<tr>
-                    <th class="header">ID</th>
+            <th class="header">ID</th>
     				<th class="header">Name</th>
     				<th class="header">Email</th>
     			</tr>
@@ -15,7 +15,7 @@
     		<tbody>
     			<?php foreach($staff as $user): ?>
     			<tr>
-                    <td class="header"><?php echo $user['user_serial']; ?></td>
+            <td class="header"><?php echo $user['user_serial']; ?></td>
     				<td class="header"><?php echo $user['user_firstname'].' '.$user['user_firstname']; ?></td>
     				<td class="header"><?php echo $user['user_email']; ?></td>
     			</tr>
