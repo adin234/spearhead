@@ -35,6 +35,7 @@ class Front_Page_Billing extends Front_Page {
     $this->_body['today'] = date("F j, Y");
     $this->_body['serviceFrom'] = $_GET['start'];
     $this->_body['serviceTo'] = $_GET['end'];
+    $this->_body['contractPrice'] = $client['client_contract_price']
     $this->_body['perDay'] = $client['client_contract_price'] / $days;
     $start = date_create((string) date("Y-m-d", strtotime($_GET['start'])));
     $end = date_create((string) date("Y-m-d", strtotime($_GET['end'])));
