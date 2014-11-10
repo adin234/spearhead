@@ -40,7 +40,7 @@ class Front_Page_Billing extends Front_Page {
     $end = date_create((string) date("Y-m-d", strtotime($_GET['end'])));
     $this->_body['noDays'] = date_diff($end, $start)->days + 1;
     $this->_body['perDay'] = number_format($client['client_contract_price'] / $days, 2);
-    $this->_body['total'] = number_format($this->_body['perDay'] * (date_diff($end, $start)->days + 1) * $client['client_guards'], 2);
+    $this->_body['total'] = number_format(($client['client_contract_price'] / $days) * (date_diff($end, $start)->days + 1) * $client['client_guards'], 2);
     $this->_body['client'] = $client;
 
     return $this->_page();
